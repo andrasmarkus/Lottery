@@ -1,10 +1,23 @@
 import urllib.request
-from bs4 import BeautifulSoup
 import collections
 import operator
-
+from bs4 import BeautifulSoup
 
 class Lottery:
+#This class represents a HTML table reader to find the most popular/unpopular numbers of the hungarian lottery numbers including 5-ös,6-os and Skandinav ( or known as 7-es) lottery. This class works with the latest results.
+#More information about these lotteries available on: https://www.szerencsejatek.hu/. Also this git repository contains the previous results from the beggining. Last updated: 26.02.19.
+#	Methods: 
+#	- init: initialize a defaultdict: keys will be the selectable numbers of the lottery type and values will be set to zero. Then the program gets around the HTML table which contains the previous selected numbers. The corressponding value will be increased with one. Finally, the class orders the dictionary for the selection.
+#		params:
+#			* url: the corresponding url to the HTML table with the previous numbers
+#			* num: the range of the selectable numbers
+#			* position: the start index of the HTML table with the selected numbers
+#	- popular: 	choose the most common selected numbers ( return with the neccessery count of the numbers, if there are more with the same value, they will be printed as well)
+#		param:
+#			* wining: count of the selected numbers
+#	- unpopular:  choose the rarest selected numbers ( return with the neccessery count of the numbers, if there are more with the same value, they will be printed as well)
+#		param:
+#			* wining: count of the selected numbers
 
     def __init__(self, url, num, position):
         self.url = url
@@ -32,8 +45,6 @@ class Lottery:
                 column_marker += 1
 
         self.d = sorted(self.d.items(), key=operator.itemgetter(1))
-        print()
-        print(self.d)
 
     def popular(self, wining):
 
