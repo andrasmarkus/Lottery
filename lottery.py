@@ -83,7 +83,7 @@ l1.unpopular(5)
 lottery6url = "https://bet.szerencsejatek.hu/cmsfiles/hatos.html"
 l2 = Lottery(lottery6url, 45, 12)
 print("\n6-os lottó nyerőszámai:")
-l1.popular(6)
+l2.popular(6)
 print("\n6-os lottó vesztőszámai:")
 l2.unpopular(6)
 
