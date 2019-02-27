@@ -1,6 +1,7 @@
 import urllib.request
 import collections
 import operator
+import math
 from bs4 import BeautifulSoup
 
 class Lottery:
@@ -72,6 +73,11 @@ class Lottery:
             print(str(self.d[i][0]), end=";")
             i = i+1
 
+    def interval(self, interval):
+        print("\n" + str(interval) + "-os lottó intervallum nyerőszámai:")
+        for i in range(self.num-1, 0, -int(math.ceil(self.num / interval))):
+            print(str(self.d[i][0]), end=";")
+
 
 lottery5url = "https://bet.szerencsejatek.hu/cmsfiles/otos.html"
 l1 = Lottery(lottery5url, 90, 10)
@@ -79,6 +85,7 @@ print("\n5-ös lottó nyerőszámai:")
 l1.popular(5)
 print("\n5-ös lottó vesztőszámai:")
 l1.unpopular(5)
+l1.interval(5)
 
 lottery6url = "https://bet.szerencsejatek.hu/cmsfiles/hatos.html"
 l2 = Lottery(lottery6url, 45, 12)
@@ -86,6 +93,7 @@ print("\n6-os lottó nyerőszámai:")
 l2.popular(6)
 print("\n6-os lottó vesztőszámai:")
 l2.unpopular(6)
+l2.interval(6)
 
 lottery7url = "https://bet.szerencsejatek.hu/cmsfiles/skandi.html"
 l3 = Lottery(lottery7url, 35, 10)
@@ -93,3 +101,4 @@ print("\n7-es lottó nyerőszámai:")
 l3.popular(7)
 print("\n7-ös lottó vesztőszámai:")
 l3.unpopular(7)
+l3.interval(7)
