@@ -76,6 +76,10 @@ class Lottery:
             i = i+1
 
     def interval(self, interval):
+        """
+        :param interval: type of the lottery (types can be 5-6-7)
+        :return: None
+        """
         print("\n" + str(interval) + "-os lottó intervallum nyerőszámai:")
         for i in range(self.num-1, 0, -int(math.ceil(self.num / interval))):
             print(str(self.d[i][0]), end=";")
